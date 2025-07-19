@@ -103,7 +103,7 @@ export const DifficultyScreen: React.FC<DifficultyScreenProps> = ({
                       {config.boardSize}x{config.boardSize}
                     </Text>
                     <View style={styles.mineRow}>
-                      <Image 
+                      <Image
                         source={require('@/assets/images/BombImage.png')}
                         style={styles.mineIcon}
                       />
@@ -140,7 +140,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 50,
-    fontWeight: "bold",
     fontFamily: "Jersey10",
     color: "#fff",
     // marginBottom: 40,
@@ -196,7 +195,6 @@ const styles = StyleSheet.create({
   },
   difficultyName: {
     fontSize: 20,
-    fontWeight: "bold",
     fontFamily: "PressStart2P",
     marginBottom: 5,
     textTransform: "uppercase",
@@ -208,18 +206,16 @@ const styles = StyleSheet.create({
   },
   difficultyDescription: {
     fontSize: 26,
-    fontWeight: "500",
     fontFamily: "Jersey10",
   },
   minesCount: {
     fontSize: 24,
-    fontWeight: "600",
     fontFamily: "Jersey10",
   },
   mineRow: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 2 
+    gap: 2
   },
   mineIcon: {
     width: 42,
@@ -247,7 +243,6 @@ const styles = StyleSheet.create({
   backButtonText: {
     fontSize: 18,
     color: "1B1B1B",
-    fontWeight: "bold",
     fontFamily: "Jersey10",
     textTransform: "uppercase",
     letterSpacing: 1,

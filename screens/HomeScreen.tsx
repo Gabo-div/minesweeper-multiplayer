@@ -34,7 +34,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       style={styles.container}
     >
       <View style={styles.content}>
-        <Text style={styles.title}>🎮 MINESWEEPER</Text>
+        <Text style={styles.title}>🎮</Text>
+        <Text style={styles.title}>MINESWEEPER</Text>
         <Text style={styles.subtitle}>¡Desafía tu mente!</Text>
 
         <View style={styles.buttonContainer}>
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   title: {
-    fontSize: 70,
+    fontSize: 60,
     fontFamily: "Jersey10",
     color: "#fff",
     marginBottom: 10,
@@ -91,16 +92,16 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   shadowWrapper: {
-  borderRadius: 15,
-  padding: 0,
-  // Sombra para iOS
-  shadowColor: '#000',
-  shadowOffset: { width: 0, height: 6 },
-  shadowOpacity: 0.18,
-  shadowRadius: 16,
-  // Sombra para Android
-  elevation: 8,
-},
+    borderRadius: 15,
+    padding: 0,
+    // Sombra para iOS
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.18,
+    shadowRadius: 16,
+    // Sombra para Android
+    elevation: 8,
+  },
   buttonContainer: {
     width: "100%",
     gap: 20,
