@@ -23,7 +23,7 @@ export interface MultiplayerRoom {
 
 class SocketService {
   public socket: Socket | null = null
-  private serverUrl = "http://192.168.1.106:3001"
+  private serverUrl = "http://192.168.1.108:3001"
 
   async connect(): Promise<void> {
     return new Promise((resolve, reject) => {

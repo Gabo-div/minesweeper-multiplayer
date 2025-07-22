@@ -1,10 +1,22 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Dimensions,
+  PixelRatio,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 interface HomeScreenProps {
   onLocalPlay: () => void;
   onMultiplayer: () => void;
 }
+
+const { width } = Dimensions.get("window");
+
+const scaleFont = (size: number) => (width / 375) * size;
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({
   onLocalPlay,
@@ -34,8 +46,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       style={styles.container}
     >
       <View style={styles.content}>
-        <Text style={styles.title}>🎮</Text>
-        <Text style={styles.title}>MINESWEEPER</Text>
+        <Text style={styles.title}>🎮 MINESWEEPER</Text>
         <Text style={styles.subtitle}>¡Desafía tu mente!</Text>
 
         <View style={styles.buttonContainer}>
@@ -70,7 +81,6 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     // alignItems: 'center',
   },
-
   content: {
     flex: 1,
     justifyContent: "center",
@@ -78,7 +88,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   title: {
-    fontSize: 60,
+    fontSize: 70,
     fontFamily: "Jersey10",
     color: "#fff",
     marginBottom: 10,
@@ -95,7 +105,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 0,
     // Sombra para iOS
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.18,
     shadowRadius: 16,
@@ -107,28 +117,67 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   button: {
-    paddingVertical: 20,
+    paddingVertical: PixelRatio.get() <= 2 ? 12 : 18,
     paddingHorizontal: 30,
     borderRadius: 15,
     alignItems: "center",
-    shadowOffset: {
-      width: 1,
-      height: 10,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    elevation: 5,
+
+    ...Platform.select({
+      android: {
+        shadowColor: "#90C4AA",
+        elevation: 8,
+      },
+      // ios: {
+      //   shadowColor: "#90C4AA",
+      //   shadowOffset: { width: 1, height: 10 },
+      //   shadowOpacity: 1,
+      //   shadowRadius: 0,
+      // },
+      // shadowOffset: {
+      //   width: 1,
+      //   height: 10,
+      // },
+    }),
+    // shadowOpacity: 1,
+    // shadowRadius: 0,
+    // elevation: 5,
   },
   localButton: {
     backgroundColor: "#A9DDC2",
-    shadowColor: "#90C4AA",
+    ...Platform.select({
+      android: {
+        shadowColor: "#90C4AA",
+      },
+      ios: {
+        shadowColor: "#90C4AA",
+        shadowOffset: { width: 0, height: 10 },
+        shadowOpacity: 1,
+        shadowRadius: 0,
+      },
+      
+    }),
   },
   multiplayerButton: {
     backgroundColor: "#34C759",
-    opacity: 0.7,
+    // opacity: 0.7,
+    ...Platform.select({
+      android: {
+        shadowColor: "#28A745",
+        elevation: 6,
+      },
+      ios: {
+        shadowColor: '#28A745',
+        shadowOffset: {
+          width: 0,
+          height: 8,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 0,
+      },
+    }),
   },
   buttonText: {
-    fontSize: 35,
+    fontSize: scaleFont(35),
     fontFamily: "Jersey10",
     // fontWeight: "bold",
     color: "#206163",
@@ -150,6 +199,6 @@ const styles = StyleSheet.create({
     fontFamily: "Jersey10",
     color: "#fff",
     textAlign: "center",
-    textTransform: "uppercase"
+    textTransform: "uppercase",
   },
 });

@@ -111,7 +111,7 @@ export default function HomeMenu() {
             onBack={isMultiplayer ? handleBackToConnection : handleBackToDifficulty}
             onBackToHome={handleBackToHome}
             isMultiplayer={isMultiplayer}
-            multiplayerRoom={multiplayerRoom}
+            multiplayerRoom={multiplayerRoom ?? undefined}
             roomCode={roomCode}
           />
         )
